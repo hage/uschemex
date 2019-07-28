@@ -5,10 +5,12 @@ defmodule Uschemex do
   exp: S-Expression
 
   ## Example
-  iex> Uschemex.eval([:+, 2, 3])
-  5
-  iex> Uschemex.eval([:+, [:-, 1, 2], 3])
-  2
+    iex> Uschemex.eval([:+, 2, 3])
+    5
+    iex> Uschemex.eval([:+, [:-, 1, 2], 3])
+    2
+    iex> Uschemex.eval([:*, 5, [:+, 2, 3]])
+    25
   """
   def eval(exp) do
     if !list?(exp) do
