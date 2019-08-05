@@ -34,9 +34,9 @@ defmodule Uschemex do
     is_number(exp)
   end
 
-  defp lookup_primitive_fun(:+), do: {:prim, fn [x, y] -> x + y end}
-  defp lookup_primitive_fun(:-), do: {:prim, fn [x, y] -> x - y end}
-  defp lookup_primitive_fun(:*), do: {:prim, fn [x, y] -> x * y end}
+  defp lookup_primitive_fun(:+), do: [:prim, fn [x, y] -> x + y end]
+  defp lookup_primitive_fun(:-), do: [:prim, fn [x, y] -> x - y end]
+  defp lookup_primitive_fun(:*), do: [:prim, fn [x, y] -> x * y end]
 
   def eval_list(exp) do
     Enum.map(exp, fn e -> eval(e) end)
@@ -47,8 +47,8 @@ defmodule Uschemex do
     apply_primitive_fun(f, args)
   end
 
-  defp apply_primitive_fun({_, f}, args) do
-    f.(args)
+  defp apply_primitive_fun([:prim|f], args) do
+    (car(f)).(args)
   end
 
   @doc """
