@@ -16,4 +16,18 @@ defmodule Env do
     if !Map.has_key?(env, var), do: raise "could not find value to variables: #{var}"
     env[var]
   end
+
+  @doc """
+  extend(env, vars, vals)
+
+  ## Example
+  iex> Env.extend(%{a: 1, b: 2}, [:a], [5])
+  %{a: 5, b: 2}
+  """
+  def extend(env, vars, vals) do
+    nenv = [vars, vals]
+    |> List.zip
+    |> Map.new
+    Map.merge(env, nenv)
+  end
 end
