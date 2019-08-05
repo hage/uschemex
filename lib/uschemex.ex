@@ -59,10 +59,12 @@ defmodule Uschemex do
     :a
     iex> Uschemex.car([])
     nil
+    iex> Uschemex.car(1)
+    ** (RuntimeError) wrong type argument: listp(1)
   """
   def car([c|_]), do: c
   def car([]),    do: nil
-  def car(_),     do: nil
+  def car(v),     do: raise "wrong type argument: listp(#{v})"
 
 
   @doc """
@@ -72,9 +74,11 @@ defmodule Uschemex do
     iex> Uschemex.cdr([:a, :b, :c])
     [:b, :c]
     iex> Uschemex.cdr([])
-    []
+    nil
+    iex> Uschemex.cdr(1)
+    ** (RuntimeError) wrong type argument: listp(1)
   """
   def cdr([_|l]), do: l
-  def cdr([]),    do: []
-  def cdr(_),     do: []
+  def cdr([]),    do: nil
+  def cdr(v),     do: raise "wrong type argument: listp(#{v})"
 end
