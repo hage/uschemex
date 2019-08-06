@@ -1,20 +1,18 @@
 language: elixir
 otp_release:
-  - 22.0
+- 22.0
 elixir:
-  - 1.9.0
+- 1.9.0
 env:
   global:
-    # Follow other language's environment
-    # e.g.) `RACK_ENV=test` has been setted as Default Environment Variables
-    # https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
-    - MIX_ENV=test
+  - MIX_ENV=test
 cache:
   directories:
-    - _build
-    - deps
+  - _build
+  - deps
 script:
-  - mix test
+- mix test
 notifications:
+  email: false
   slack:
-    secure: RVFFMQofyzXUjYDgxs1nrCgM2C/sXGyN+CdoAHCItYmXp+8L6m3g9/ylhk7SJNVyuoodYBssdifS01JKnC2wB4sjSsC69JorKUuqTBcyXypQiSLA8j1cW9TwRzxVCtgoa0xfbTqTXLietaKxnkwtDzll31J5g3hQYBMcQFoTfMAzkkH/4Gn1UN1IPriO1QuySUy9hzg0W/xrIQL4PdT8unCVvUdv2wKAz0HR5YZeso1tD3L/8Ie/OmmLCTBMZBB3JPXeE4gDvotRqC+vQgaQjOxDVAtzm51wQRL//aJ/EFIgxE0b99s5y30Ne0F9zwtL8yDAotEHLKO/cNfrgVQSVNOk4J8BwfbMI4IuYjzSNpeIFpsqRiEDJ2FpxjLjO6zpAG17+wHbTm9jcUiqdOCBR6engwdTwZ1Tn75b0WOpnS/VrESmfHqeobPskA4RGTlJPebCyIkyQ5CR0jTRfBuhEJ6FlLstPWCUjaxkBkgDheY2GvwwzqWaEIune77oBzbTxrroa/K+2b4Kkw/I5/UEHzEBQYlQxDhZFaJy6PytcmRGZ3lEhflQ1ThCLcM7T4nlVJnNHdFu99vwKcAVBktYgPAZY9y1EfiNL2x9QFPkGlEbkACL6ljTCbH9L2PdWTiTVBAl8L76YQIoZbH7nXLtiHbiUERTY06DzD80NJLHA7Q=
+    secure: ZV+DHLuWZx3K9xxs0SJERH39Vmoa412d6FxmThd/BuwJmIX6g2i/2hV3UDZybPMTFna2NFkjsJbwzBOxXHiele1CNOkM2ofbLx1md0NdLNTNhtBHtCk5nqdOHuUUQ5VpFnpHMwAq34JVureKB2nMyHZah9ODrMci4KVmBFSZCKMhVfgSh2j66DPjDMnteRVyZxA/gwmEzXRTX+NVjmEoQAwwu5cZnTML18wissO1ps0fdhIWOODvJ6jaxCIlB9LHThFqWhYQUYtvfZl8aNbU8xcfbPSR/YmPsa1ctuUvb8qO4QOWL+9u56OH9JOkuZxvu+TYB5RqJ5usrFX5PzwfNtmcqamcw1eZ3C+Co/XVMGWgXa7PkVpEa7Sn83L8kiXurwf34BGp1OOeqQIFCJZu9S5M4HxEfkx+FFcvJmGomx3KJtVDCNZox+dOmNDiiqiOgjngkTm/94weK0m+ogfzggszxhSb7JhjNgPTx6PC9uJaIVQ1Q1ZFGcaJt1lmX6HhgY6y83b3KljD0y2NBmZoXGpEFYJ7/JKJ34pePjO14jMj3G3fqSdi5EuUxHTN6NDeGUFQTxZzaF4p2ZED3nIfDFICJ5v0fqM1Y9qs0VPXc9U1YbitDI7VVYCfrUigmGbwo5EMLAel6uI+hqmVpwkLnhavTqcy5BEhM08tkDL281I=
