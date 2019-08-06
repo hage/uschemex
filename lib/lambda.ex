@@ -2,7 +2,7 @@ defmodule Lambda do
   import Uschemex.List
 
   def eval(exp, env) do
-    closure = make_closure(exp, env)
+    make_closure(exp, env)
   end
 
   @doc """
