@@ -1,7 +1,19 @@
 defmodule Let do
   import Uschemex.List
 
+  @doc """
+  Let.eval/2
+
+  ## Example
+  iex> Let.eval([:let, [[:x, 3], [:y, 2]], [:lambda, [:x, :y], [:*, :x, :y]]], %{})
+  [:closure, [:x, :y], [:*, :x, :y], %{x: 3, y: 2}]
+  """
   def eval(exp, env) do
+    Eval.eval(translate_let_to_lambda(exp), env)
+  end
+
+  def let?(exp) do
+    :let == car(exp)
   end
 
   @doc """
