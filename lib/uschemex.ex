@@ -1,4 +1,6 @@
 defmodule Uschemex do
+  import Uschemex.List
+
   @doc """
   eval(exp)
 
@@ -50,35 +52,4 @@ defmodule Uschemex do
   defp apply_primitive_fun([:prim|f], args) do
     (car(f)).(args)
   end
-
-  @doc """
-  car -- Contents of the Address part of Register
-
-  ## Examples
-    iex> Uschemex.car([:a, :b, :c])
-    :a
-    iex> Uschemex.car([])
-    nil
-    iex> Uschemex.car(1)
-    ** (RuntimeError) wrong type argument: listp(1)
-  """
-  def car([c|_]), do: c
-  def car([]),    do: nil
-  def car(v),     do: raise "wrong type argument: listp(#{v})"
-
-
-  @doc """
-  cdr -- Contents of the Decrement part of the Register
-
-  ## Examples
-    iex> Uschemex.cdr([:a, :b, :c])
-    [:b, :c]
-    iex> Uschemex.cdr([])
-    nil
-    iex> Uschemex.cdr(1)
-    ** (RuntimeError) wrong type argument: listp(1)
-  """
-  def cdr([_|l]), do: l
-  def cdr([]),    do: nil
-  def cdr(v),     do: raise "wrong type argument: listp(#{v})"
 end
