@@ -7,12 +7,12 @@ defmodule Uschemex.List do
   :a
   iex> Uschemex.List.car([])
   nil
-  iex> Uschemex.List.car(1)
-  ** (RuntimeError) wrong type argument: listp(1)
+  iex> Uschemex.List.car(Array)
+  ** (RuntimeError) wrong type argument: listp(Array)
   """
   def car([c|_]), do: c
   def car([]),    do: nil
-  def car(v),     do: raise "wrong type argument: listp(#{v})"
+  def car(v),     do: raise "wrong type argument: listp(#{inspect v})"
 
   @doc """
   cdr -- Contents of the Decrement part of the Register
@@ -22,10 +22,10 @@ defmodule Uschemex.List do
   [:b, :c]
   iex> Uschemex.List.cdr([])
   nil
-  iex> Uschemex.List.cdr(1)
-  ** (RuntimeError) wrong type argument: listp(1)
+  iex> Uschemex.List.cdr(%{})
+  ** (RuntimeError) wrong type argument: listp(%{})
   """
   def cdr([_|l]), do: l
   def cdr([]),    do: nil
-  def cdr(v),     do: raise "wrong type argument: listp(#{v})"
+  def cdr(v),     do: raise "wrong type argument: listp(#{inspect v})"
 end
