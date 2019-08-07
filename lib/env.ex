@@ -1,4 +1,20 @@
 defmodule Env do
+  def global do
+    primitive_fun
+  end
+
+  def primitive_fun do
+    %{
+      +: [:prim, fn [x, y] -> x + y end],
+      -: [:prim, fn [x, y] -> x - y end],
+      *: [:prim, fn [x, y] -> x * y end]
+    }
+  end
+
+  def merge(map1, map2) do
+    Map.merge(map1, map2)
+  end
+
   @doc """
   lookup(env, var)
 
@@ -28,6 +44,6 @@ defmodule Env do
     nenv = [vars, vals]
     |> List.zip
     |> Map.new
-    Map.merge(env, nenv)
+    merge(env, nenv)
   end
 end
