@@ -2,9 +2,10 @@ defmodule Eval do
   import Uschemex.List
 
   @doc """
-  eval(exp)
+  eval(exp, env)
 
   exp: S-Expression
+  env: Environment
 
   ## Example
   iex> Eval.eval([:+, 2, 3], %{})
