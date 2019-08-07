@@ -26,17 +26,16 @@ defmodule Eval do
   def eval(exp = [:lambda|_], env), do: Lambda.eval(exp, env)
   def eval(exp = [:let|   _], env), do: Let.eval(exp, env)
   def eval(exp, env) do
-    cond do
-      !list?(exp) ->
-        if immediate_val?(exp) do
-          exp
-        else
-          lookup_primitive_fun(exp) || Env.lookup(env, exp)
-        end
-      true ->
-        f = eval(car(exp), env)
-        args = eval_list(cdr(exp), env)
-        uapply(f, args)
+    if !list?(exp) do
+      if immediate_val?(exp) do
+        exp
+      else
+        lookup_primitive_fun(exp) || Env.lookup(env, exp)
+      end
+    else
+      f = eval(car(exp), env)
+      args = eval_list(cdr(exp), env)
+      uapply(f, args)
     end
   end
 
