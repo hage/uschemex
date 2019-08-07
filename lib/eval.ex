@@ -23,6 +23,8 @@ defmodule Eval do
   iex> Eval.eval([[:lambda, [], [:*, :x, :x]]], %{x: 4})
   16
   """
+  def eval(exp = [:lambda|_], env), do: Lambda.eval(exp, env)
+  def eval(exp = [:let|   _], env), do: Let.eval(exp, env)
   def eval(exp, env) do
     cond do
       !list?(exp) ->
@@ -31,10 +33,6 @@ defmodule Eval do
         else
           lookup_primitive_fun(exp) || Env.lookup(env, exp)
         end
-      Lambda.lambda?(exp) ->
-        Lambda.eval(exp, env)
-      Let.let?(exp) ->
-        Let.eval(exp, env)
       true ->
         f = eval(car(exp), env)
         args = eval_list(cdr(exp), env)
