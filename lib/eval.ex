@@ -35,7 +35,7 @@ defmodule Eval do
     else
       f = eval(car(exp), env)
       args = eval_list(cdr(exp), env)
-      uapply(f, args)
+      apply_it(f, args)
     end
   end
 
@@ -56,8 +56,7 @@ defmodule Eval do
     Enum.map(exp, fn e -> eval(e, env) end)
   end
 
-  # uapply is first letter of uSchemEX
-  def uapply(f, args) do
+  def apply_it(f, args) do
     if primitive_fun?(f) do
       apply_primitive_fun(f, args)
     else
